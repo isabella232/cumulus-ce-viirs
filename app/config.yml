@@ -1,0 +1,36 @@
+default:
+  stackName: aimee-deploy-3-cumulus
+  stackNameNoDash: AimeeDeploy3Cumulus
+
+  apiStage: dev
+
+  vpc:
+    vpcId: vpc-e61ddf9e
+    subnets:
+      - subnet-ef13ced0
+
+  ecs:
+    instanceType: t2.micro
+
+  buckets:
+    internal: cumulus-devseed-internal
+    private: cumulus-devseed-private
+    protected: cumulus-devseed-protected
+
+  iams:
+    ecsRoleArn: 'arn:aws:iam::433612427488:role/aimee-deploy-ecs'
+    lambdaApiGatewayRoleArn: 'arn:aws:iam::433612427488:role/aimee-deploy-lambda-api-gateway'
+    lambdaProcessingRoleArn: 'arn:aws:iam::433612427488:role/aimee-deploy-lambda-processing'
+    stepRoleArn: 'arn:aws:iam::433612427488:role/aimee-deploy-steprole'
+
+  urs_url: https://uat.urs.earthdata.nasa.gov/ #make sure to include the trailing slash
+
+    # if not specified the value of the apigateway backend endpoint is used
+    # api_backend_url: https://apigateway-url-to-api-backend/ #make sure to include the trailing slash
+
+    # if not specified the value of the apigateway dist url is used
+    # api_distribution_url: https://apigateway-url-to-distribution-app/ #make sure to include the trailing slash
+
+  # URS users who should have access to the dashboard application.
+  users:
+    - username: barciaai@gmail.com
