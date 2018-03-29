@@ -24,5 +24,57 @@ To use a different stack name, update `app/config.yml` and `iam/config.yml`.
 
 ### Current haxx
 
-* `node_modules/@cumulus/deployment/app/cumulus_api_default.config.yml` and `.../cumulus_api_v1.config.yml` have been edited, after installation, to reference `node_modules/@cumulus-community/api/config/api_default.yml` and `.../api_v1.yml`.
-* `@cumulus-community/api` is installed from github. `@cumulus-community/api` is an adaptation of `@cumulus/api` such that it uses all lambdas from the `@cumulus/api` npm package _except_ the token endpoints. And eventually the distribution endpoints.
+Note that this deploy repository includes this line in `app/config.yml`
+
+```yaml
+# app/config.yml
+useCommunity: true
+```
+
+#### Updates to `@cumulus/deployment`
+
+`node_modules/@cumulus/deployment/app/cumulus_api.template.yml` should use:
+
+```
+  {{# if ../parent.useCommunity}}
+    {{# if this.communityHandler}}
+      Handler: {{this.communityHandler}}
+    {{else}}
+      Handler: {{this.handler}}
+    {{/if}}
+  {{else}}
+      Handler: {{this.handler}}
+  {{/if}}
+```
+
+#### Updates to `@cumulus/deployment`
+
+`node_modules/@cumulus/api/config/api_default.yml` and `/api_v1.yml` should include:
+
+```yaml
+ApiTokenDefault:
+  handler: index.token
+  communityHandler: index.communityToken
+```
+
+and 
+
+```yaml
+ApiTokenV1:
+  handler: index.token
+  communityHandler: index.communityToken
+```
+
+In order for this to work...
+
+```javascript
+# cumulus/packages/api/index.js
+'use strict';
+
+exports.token = require('./endpoints/token');
+exports.communityToken = require('./endpoints/communityToken');
+```
+
+where `token` contains earth data login code and `communityToken` contains google oauth code.
+
+Google oauth code is viewable at [developmentseed/cumulus-community-api/blob/master/endpoints/token.js](https://github.com/developmentseed/cumulus-community-api/blob/master/endpoints/token.js).
