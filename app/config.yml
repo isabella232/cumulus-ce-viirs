@@ -2,6 +2,8 @@ default:
   stackName: aimee-deploy-3-cumulus
   stackNameNoDash: AimeeDeploy3Cumulus
 
+  useCommunity: true
+
   apiStage: dev
 
   vpc:
