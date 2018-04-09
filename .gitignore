@@ -12,3 +12,4 @@ package-lock.json
 CumulusApiDefault.yml
 CumulusApiV1.yml
 yarn.lock
+npm-debug.log
