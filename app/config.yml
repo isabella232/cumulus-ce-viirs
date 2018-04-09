@@ -2,7 +2,9 @@ default:
   stackName: aimee-deploy-3-cumulus
   stackNameNoDash: AimeeDeploy3Cumulus
 
-  useCommunity: true
+  communityConfiguration:
+    ApiTokenDefault:
+      handler: index.googleToken
 
   apiStage: dev
 
