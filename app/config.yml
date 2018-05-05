@@ -38,3 +38,4 @@ default:
   # URS users who should have access to the dashboard application.
   users:
     - username: barciaai@gmail.com
+    - username: alireza@developmentseed.org
