@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "babel-node spec/run.js",
-    "deploy": "kes cf deploy --kes-folder app --region us-east-1 --template node_modules/@cumulus/deployment/app"
+    "deploy": "./node_modules/.bin/kes cf deploy --kes-folder app --region us-east-1 --template node_modules/@cumulus/deployment/app --profile cumulus-nasa",
+    "deploy-iam": "kes cf deploy --kes-folder iam --region us-east-1 --deployment default --profile cumulus-nasa"
   },
   "author": "Cumulus Authors",
   "license": "Apache-2.0",
@@ -22,9 +23,9 @@
     ]
   },
   "dependencies": {
-    "@cumulus/api": "^1.2.0",
-    "@cumulus/deployment": "^1.2.0",
-    "@cumulus/hello-world": "^1.2.0",
+    "@cumulus/api": "file:../cumulus/packages/api",
+    "@cumulus/deployment": "file:../cumulus/packages/deployment",
+    "@cumulus/hello-world": "^1.5.1",
     "aws-sdk": "^2.209.0",
     "jasmine": "^3.1.0",
     "jasmine-console-reporter": "^2.0.1",

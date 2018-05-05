@@ -1,6 +1,6 @@
 default:
-  stackName: aimee-deploy-3-cumulus
-  stackNameNoDash: AimeeDeploy3Cumulus
+  stackName: cce
+  stackNameNoDash: Cce
 
   communityConfiguration:
     ApiTokenDefault:
@@ -22,10 +22,10 @@ default:
     protected: cumulus-devseed-protected
 
   iams:
-    ecsRoleArn: 'arn:aws:iam::433612427488:role/aimee-deploy-ecs'
-    lambdaApiGatewayRoleArn: 'arn:aws:iam::433612427488:role/aimee-deploy-lambda-api-gateway'
-    lambdaProcessingRoleArn: 'arn:aws:iam::433612427488:role/aimee-deploy-lambda-processing'
-    stepRoleArn: 'arn:aws:iam::433612427488:role/aimee-deploy-steprole'
+    ecsRoleArn: 'arn:aws:iam::433612427488:role/cce-ecs'
+    lambdaApiGatewayRoleArn: 'arn:aws:iam::433612427488:role/cce-lambda-api-gateway'
+    lambdaProcessingRoleArn: 'arn:aws:iam::433612427488:role/cce-lambda-processing'
+    stepRoleArn: 'arn:aws:iam::433612427488:role/cce-steprole'
 
   urs_url: https://uat.urs.earthdata.nasa.gov/ #make sure to include the trailing slash
 

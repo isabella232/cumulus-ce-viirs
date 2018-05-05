@@ -1,6 +1,6 @@
 default:
-  prefix: aimee-deploy
-  stackName: aimee-deploy-iam
+  prefix: cce
+  stackName: cce-iam
   authorizor: false
   capabilities:
     - CAPABILITY_NAMED_IAM
