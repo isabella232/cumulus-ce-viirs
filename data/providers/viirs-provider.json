@@ -1,0 +1,6 @@
+{
+  "id": "viirs_provider",
+  "globalConnectionLimit": 10,
+  "host": "https://data.ngdc.noaa.gov/instruments/remote-sensing/passive/spectrometers-radiometers/imaging/viirs/dnb_composites/v10/201803/vcmslcfg",
+  "protocol": "https"
+}

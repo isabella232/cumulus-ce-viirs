@@ -1,0 +1,15 @@
+{
+  "name": "viirs",
+  "version": "001",
+  "files": [
+    {
+      "regex": "(.*)\\.tgz",
+      "bucket": "internal",
+      "sampleFileName": "SVDNB_npp_20180301-20180331_00N060E_vcmslcfg_v10_c201804022005.tgz"
+    }
+  ],
+  "granuleIdExtraction": "(.*)\\.tgz",
+  "granuleId": "SVDNB_npp_20180301-20180331_00N060E_vcmslcfg_v10_c201804022005",
+  "sampleFileName": "SVDNB_npp_20180301-20180331_00N060E_vcmslcfg_v10_c201804022005.tgz",
+  "dataType": "viirs-collection" 
+}
