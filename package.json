@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "babel-node spec/run.js",
-    "deploy": "./node_modules/.bin/kes cf deploy --kes-folder app --region us-east-1 --template node_modules/@cumulus/deployment/app",
+    "deploy": "./node_modules/.bin/kes cf deploy --kes-folder app --region us-east-1 --template node_modules/@cumulus/deployment/app --profile cumulus-nasa",
     "deploy-iam": "kes cf deploy --kes-folder iam --region us-east-1 --deployment default"
   },
   "author": "Cumulus Authors",
@@ -26,11 +26,12 @@
     "@cumulus/api": "file:../cumulus/packages/api",
     "@cumulus/deployment": "file:../cumulus/packages/deployment",
     "@cumulus/hello-world": "^1.5.1",
-    "@cumulus/discover-granules": "^1.5.1",
+    "@cumulus/discover-granules": "file:../cumulus/tasks/discover-granules",
     "@cumulus/integration-tests": "^1.5.1",
     "@cumulus/queue-granules": "^1.5.1",
     "@cumulus/sf-sns-report": "^1.5.1",
     "@cumulus/sync-granule": "^1.5.1",
+    "@cumulus/integration-tests": "^1.5.1",
     "aws-sdk": "^2.209.0",
     "jasmine": "^3.1.0",
     "jasmine-console-reporter": "^2.0.1",
