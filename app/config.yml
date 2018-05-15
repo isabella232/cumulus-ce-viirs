@@ -1,6 +1,13 @@
 default:
   stackName: cce
   stackNameNoDash: Cce
+  params:
+    - name: DockerPassword
+      value: '{{DOCKER_PASSWORD}}'
+    - name: DockerEmail
+      value: '{{DOCKER_EMAIL}}'
+    - name: CmrPassword
+      value: '{{CMR_PASSWORD}}'
 
   communityConfiguration:
     ApiTokenDefault:
@@ -14,7 +21,30 @@ default:
       - subnet-ef13ced0
 
   ecs:
-    instanceType: t2.micro
+    instanceType: t2.small
+    desiredInstances: 1
+    availabilityZone: us-east-1e
+    amiid: ami-a7a242da
+    publicIp: true
+    restartTasksOnDeploy: true
+    docker:
+      username: aimeeb2
+    services:
+      HelloWorld:
+        image: aimeeb2/cumulus-ecs-task-python:0.0.0
+        cpu: 400
+        memory: 700
+        count: 1
+        envs:
+          AWS_DEFAULT_REGION:
+            function: Fn::Sub
+            value: '${AWS::Region}'
+        commands:
+          - function: Ref
+            value: HelloWorldActivity
+
+  activities:
+    - name: HelloWorld
 
   buckets:
     internal: cumulus-devseed-internal
@@ -22,6 +52,7 @@ default:
     protected: cumulus-devseed-protected
 
   iams:
+    instanceProfile: 'arn:aws:iam::433612427488:instance-profile/cce-ecs'
     ecsRoleArn: 'arn:aws:iam::433612427488:role/cce-ecs'
     lambdaApiGatewayRoleArn: 'arn:aws:iam::433612427488:role/cce-lambda-api-gateway'
     lambdaProcessingRoleArn: 'arn:aws:iam::433612427488:role/cce-lambda-processing'
