@@ -8,6 +8,7 @@
       "sampleFileName": "SVDNB_npp_20180301-20180331_00N060E_vcmslcfg_v10_c201804022005.tgz"
     }
   ],
+  "provider_path": "/instruments/remote-sensing/passive/spectrometers-radiometers/imaging/viirs/dnb_composites/v10/201803/vcmslcfg/",
   "granuleIdExtraction": "(.*)\\.tgz",
   "granuleId": "SVDNB_npp_20180301-20180331_00N060E_vcmslcfg_v10_c201804022005",
   "sampleFileName": "SVDNB_npp_20180301-20180331_00N060E_vcmslcfg_v10_c201804022005.tgz",
