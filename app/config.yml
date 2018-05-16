@@ -30,8 +30,8 @@ default:
     docker:
       username: aimeeb2
     services:
-      HelloWorld:
-        image: aimeeb2/cumulus-ecs-task-python:0.0.1
+      DownloadTiles:
+        image: aimeeb2/cumulus-ecs-task-python:0.0.3
         cpu: 400
         memory: 700
         count: 1
@@ -41,10 +41,10 @@ default:
             value: '${AWS::Region}'
         commands:
           - function: Ref
-            value: HelloWorldActivity
+            value: DownloadTilesActivity
 
   activities:
-    - name: HelloWorld
+    - name: DownloadTiles
 
   buckets:
     internal: cumulus-devseed-internal

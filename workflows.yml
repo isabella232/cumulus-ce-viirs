@@ -1,4 +1,4 @@
-DiscoverAndQueueGranules:
+DiscoverAndDownloadGranules:
   Comment: 'Discover and queue granules'
   StartAt: StatusReport
   States:
@@ -22,47 +22,21 @@ DiscoverAndQueueGranules:
           - States.ALL
           ResultPath: '$.exception'
           Next: StopStatus
-      Next: StopStatus
-    StopStatus:
-      Type: Task
-      Resource: ${SfSnsReportLambdaFunction.Arn}
-      CumulusConfig:
-        sfnEnd: true
-        stack: '{$.meta.stack}'
-        bucket: '{$.meta.buckets.internal}'
-        stateMachine: '{$.cumulus_meta.state_machine}'
-        executionName: '{$.cumulus_meta.execution_name}'
-        cumulus_message:
-          input: '{$}'
-      Catch:
-        - ErrorEquals:
-          - States.ALL
-          Next: WorkflowFailed
-      End: true
-    WorkflowFailed:
-      Type: Fail
-      Cause: 'Workflow failed'
-
-DownloadTiles:
-  Comment: 'DownloadTiles'
-  StartAt: Report
-  States:
-    Report:
-      Type: Task
-      Resource: ${SfSnsReportLambdaFunction.Arn}
-      CumulusConfig:
-        cumulus_message:
-          input: '{$}'
-      Next: DownloadTiles 
+      Next: DownloadTiles
     DownloadTiles:
+      CumulusConfig:
+        provider: '{$.meta.provider}'
+        collection: '{$.meta.collection}'
+        cumulus_message:
+          input: '[$.payload.granules[*].files[*].name]'
       Type: Task
-      Resource: ${HelloWorldActivity}
+      Resource: ${DownloadTilesActivity}
       Catch:
         - ErrorEquals:
           - States.ALL
           ResultPath: '$.exception'
           Next: StopStatus
-      Next: StopStatus 
+      Next: StopStatus
     StopStatus:
       Type: Task
       Resource: ${SfSnsReportLambdaFunction.Arn}
