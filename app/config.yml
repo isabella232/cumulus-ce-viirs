@@ -31,7 +31,7 @@ default:
       username: aimeeb2
     services:
       HelloWorld:
-        image: aimeeb2/cumulus-ecs-task-python:0.0.0
+        image: aimeeb2/cumulus-ecs-task-python:0.0.1
         cpu: 400
         memory: 700
         count: 1
