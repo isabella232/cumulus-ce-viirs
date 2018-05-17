@@ -14,6 +14,8 @@ Read the [Cumulus Documentation](https://cumulus-nasa.github.io/)
 ```bash
 nvm use
 npm install
+# If running viirs processing workflow
+npm run viirs
 ```
 
 ### How to configure your test stack
