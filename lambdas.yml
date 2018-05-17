@@ -23,3 +23,11 @@ SyncGranule:
   logToElasticSearch: true
   source: 'node_modules/@cumulus/sync-granule/dist/'
   useMessageAdapter: true
+
+ViirsProcessing:
+  handler: lambda_function.lambda_handler
+  timeout: 300
+  logToElasticSearch: true
+  source: 'lambdas/viirs_processing/dist/'
+  runtime: python3.6
+

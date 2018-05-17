@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "babel-node spec/run.js",
+    "viirs": "git clone https://github.com/abarciauskas-bgse/viirs_processing && mv viirs_processing lambdas/ && cd lambdas/viirs_processing && make viirs && sudo rm -r .git",
     "deploy": "./node_modules/.bin/kes cf deploy --kes-folder app --region us-east-1 --template node_modules/@cumulus/deployment/app",
     "deploy-iam": "kes cf deploy --kes-folder iam --region us-east-1 --deployment default"
   },
