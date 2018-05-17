@@ -21,17 +21,18 @@ default:
       - subnet-ef13ced0
 
   ecs:
-    instanceType: t2.small
+    instanceType: t2.xlarge
     desiredInstances: 1
     availabilityZone: us-east-1e
     amiid: ami-a7a242da
     publicIp: true
     restartTasksOnDeploy: true
+    volumeSize: 16
     docker:
       username: aimeeb2
     services:
       DownloadTiles:
-        image: aimeeb2/cumulus-ecs-task-python:0.0.3
+        image: aimeeb2/cumulus-ecs-task-python:0.0.4
         cpu: 400
         memory: 700
         count: 1
@@ -42,6 +43,8 @@ default:
         commands:
           - function: Ref
             value: DownloadTilesActivity
+          - function: Ref
+            value: ViirsProcessingLambdaFunction
 
   activities:
     - name: DownloadTiles
