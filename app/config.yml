@@ -21,18 +21,18 @@ default:
       - subnet-ef13ced0
 
   ecs:
-    instanceType: t2.xlarge
+    instanceType: i3.xlarge
     desiredInstances: 1
     availabilityZone: us-east-1e
-    amiid: ami-a7a242da
+    amiid: ami-aff65ad2
     publicIp: true
     restartTasksOnDeploy: true
-    volumeSize: 16
+    keyPairName: abarciauskas-ecs
     docker:
       username: aimeeb2
     services:
       DownloadTiles:
-        image: aimeeb2/cumulus-ecs-task-python:0.0.4
+        image: aimeeb2/cumulus-ecs-task-python:0.0.8
         cpu: 400
         memory: 700
         count: 1
