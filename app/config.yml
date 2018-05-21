@@ -8,6 +8,11 @@ default:
       value: '{{DOCKER_EMAIL}}'
     - name: CmrPassword
       value: '{{CMR_PASSWORD}}'
+  cfFile: app/cloudformation.template.yml
+  configFile: app/config.yml
+  template:
+    cfFile: node_modules/@cumulus/deployment/app/cloudformation.template.yml
+    configFile: app/config.yml
 
   communityConfiguration:
     ApiTokenDefault:
