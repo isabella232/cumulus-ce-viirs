@@ -15,6 +15,6 @@ Resources:
               - "cloud-init-per once docker_options echo 'OPTIONS=\"${OPTIONS} --storage-opt dm.basesize=40G\"' >> /etc/sysconfig/docker\n"
               - "\n"
               - "yum install -y aws-cfn-bootstrap\n"
-              - Fn::Sub: "/opt/aws/bin/cfn-init -v --stack ${AWS::StackName} --resource CumulusContainerInstanceLaunch --region ${AWS::Region}\n"
+              - Fn::Sub: "/opt/aws/bin/cfn-init -v --stack ${AWS::StackName} --resource CumulusContainerInstanceLaunch --region ${AWS::Region} -c MountConfig\n"
               - Fn::Sub: "/opt/aws/bin/cfn-signal -e $? --stack ${AWS::StackName} --resource CumulusECSAutoScalingGroup --region ${AWS::Region}"
               - "\n"
