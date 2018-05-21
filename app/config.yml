@@ -9,7 +9,6 @@ default:
     - name: CmrPassword
       value: '{{CMR_PASSWORD}}'
   cfFile: app/cloudformation.template.yml
-  configFile: app/config.yml
   template:
     cfFile: node_modules/@cumulus/deployment/app/cloudformation.template.yml
     configFile: app/config.yml
