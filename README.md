@@ -1,6 +1,6 @@
-#  Cumulus Community Template Deploy
+#  Cumulus Community Edition Examples: VIIRS Workflow
 
-This is a WIP edition of a template for the general public to use Cumulus.
+This is an example WIP edition of a template for the general public to use Cumulus.
 
 ## What is Cumulus?
 
