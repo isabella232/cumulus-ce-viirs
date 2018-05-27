@@ -55,11 +55,11 @@ default:
     protected: cumulus-devseed-protected
 
   iams:
-    instanceProfile: 'arn:aws:iam::433612427488:instance-profile/cce-ecs'
-    ecsRoleArn: 'arn:aws:iam::433612427488:role/cce-ecs'
-    lambdaApiGatewayRoleArn: 'arn:aws:iam::433612427488:role/cce-lambda-api-gateway'
-    lambdaProcessingRoleArn: 'arn:aws:iam::433612427488:role/cce-lambda-processing'
-    stepRoleArn: 'arn:aws:iam::433612427488:role/cce-steprole'
+    instanceProfile: 'arn:aws:iam::{{AWS_ACCOUNT_ID}}:instance-profile/cce-ecs'
+    ecsRoleArn: 'arn:aws:iam::{{AWS_ACCOUNT_ID}}:role/cce-ecs'
+    lambdaApiGatewayRoleArn: 'arn:aws:iam::{{AWS_ACCOUNT_ID}}:role/cce-lambda-api-gateway'
+    lambdaProcessingRoleArn: 'arn:aws:iam::{{AWS_ACCOUNT_ID}}:role/cce-lambda-processing'
+    stepRoleArn: 'arn:aws:iam::{{AWS_ACCOUNT_ID}}:role/cce-steprole'
 
   urs_url: https://uat.urs.earthdata.nasa.gov/ #make sure to include the trailing slash
 

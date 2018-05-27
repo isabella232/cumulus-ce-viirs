@@ -1,6 +1,6 @@
 #  Cumulus Community Edition Examples: VIIRS Workflow
 
-This is an example WIP edition of a template for the general public to use Cumulus.
+This is an example project using Cumulus Community Edition.
 
 ## What is Cumulus?
 
@@ -18,7 +18,7 @@ npm install
 npm run viirs
 ```
 
-### How to configure your test stack
+### How to configure your stack
 
 Your default AWS credentials should be the same credentials used for the deployment.
 
