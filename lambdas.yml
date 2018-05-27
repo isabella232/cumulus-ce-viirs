@@ -31,3 +31,9 @@ ViirsProcessing:
   source: 'lambdas/viirs_processing/dist/'
   runtime: python3.6
 
+GenerateCollections:
+  handler: index.handler
+  timeout: 300
+  logToElasticSearch: true
+  source: 'lambdas/generateCollections/dist/'
+  useMessageAdapter: true
