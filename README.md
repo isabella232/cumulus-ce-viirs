@@ -24,59 +24,9 @@ Your default AWS credentials should be the same credentials used for the deploym
 
 To use a different stack name, update `app/config.yml` and `iam/config.yml`.
 
-### Current haxx
 
-Note that this deploy repository includes this line in `app/config.yml`
+## Troubleshooting
 
-```yaml
-# app/config.yml
-useCommunity: true
-```
+**Error:** `distutils.errors.DistutilsOptionError: must supply either home or prefix/exec-prefix -- not both` when running `npm run viirs`
+**Solution:** https://stackoverflow.com/questions/24257803/distutilsoptionerror-must-supply-either-home-or-prefix-exec-prefix-not-both
 
-#### Updates to `@cumulus/deployment`
-
-`node_modules/@cumulus/deployment/app/cumulus_api.template.yml` should use:
-
-```
-  {{# if ../parent.useCommunity}}
-    {{# if this.communityHandler}}
-      Handler: {{this.communityHandler}}
-    {{else}}
-      Handler: {{this.handler}}
-    {{/if}}
-  {{else}}
-      Handler: {{this.handler}}
-  {{/if}}
-```
-
-#### Updates to `@cumulus/deployment`
-
-`node_modules/@cumulus/api/config/api_default.yml` and `/api_v1.yml` should include:
-
-```yaml
-ApiTokenDefault:
-  handler: index.token
-  communityHandler: index.communityToken
-```
-
-and 
-
-```yaml
-ApiTokenV1:
-  handler: index.token
-  communityHandler: index.communityToken
-```
-
-In order for this to work...
-
-```javascript
-# cumulus/packages/api/index.js
-'use strict';
-
-exports.token = require('./endpoints/token');
-exports.communityToken = require('./endpoints/communityToken');
-```
-
-where `token` contains earth data login code and `communityToken` contains google oauth code.
-
-Google oauth code is viewable at [developmentseed/cumulus-community-api/blob/master/endpoints/token.js](https://github.com/developmentseed/cumulus-community-api/blob/master/endpoints/token.js).
