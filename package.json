@@ -6,7 +6,7 @@
   "scripts": {
     "test": "babel-node spec/run.js",
     "viirs": "rm -rf lambdas/viirs_processing && git clone https://github.com/abarciauskas-bgse/viirs_processing && mv viirs_processing lambdas/ && cd lambdas/viirs_processing && make viirs && sudo rm -r .git",
-    "deploy": "./node_modules/.bin/kes cf deploy --kes-folder app --region us-east-1 --template node_modules/@cumulus/deployment/app",
+    "deploy": "./node_modules/.bin/kes cf deploy --kes-folder app --region us-east-1 --template node_modules/@cumulus-ce/deployment/app",
     "deploy-iam": "kes cf deploy --kes-folder iam --region us-east-1 --deployment default"
   },
   "author": "Cumulus Authors",
@@ -24,8 +24,8 @@
     ]
   },
   "dependencies": {
-    "@cumulus-ce/api": "^0.0.0",
-    "@cumulus-ce/deployment": "^0.0.0",
+    "@cumulus-ce/api": "^0.0.1",
+    "@cumulus-ce/deployment": "^0.0.2",
     "@cumulus/discover-granules": "^1.5.4",
     "@cumulus/hello-world": "^1.5.4",
     "@cumulus/integration-tests": "^1.5.4",
