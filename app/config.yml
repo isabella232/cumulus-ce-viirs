@@ -33,7 +33,7 @@ default:
       username: cumuluss
     services:
       DownloadTiles:
-        image: cumuluss/cumulus-ecs-task-python:0.0.1
+        image: cumuluss/cumulus-geolambda:0.0.0
         cpu: 400
         memory: 700
         count: 3

@@ -4,6 +4,7 @@ const cumulusMessageAdapter = require('@cumulus/cumulus-message-adapter-js');
 const { scheduler } = require('@cumulus-ce/api');
 const Rule = require('@cumulus-ce/api/models/rules');
 
+// TODO: Make this an environment variable
 const options = {
   spanUnit: 'month',
   spanStart: '201204',
