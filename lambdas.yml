@@ -37,3 +37,10 @@ GenerateCollections:
   logToElasticSearch: true
   source: 'lambdas/generateCollections/dist/'
   useMessageAdapter: true
+  envs:
+    CollectionsTable:
+      function: Ref
+      value: CollectionsTableDynamoDB
+    ProvidersTable:
+      function: Ref
+      value: ProvidersTableDynamoDB
