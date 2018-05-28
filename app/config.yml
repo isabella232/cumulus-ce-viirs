@@ -30,7 +30,7 @@ default:
     restartTasksOnDeploy: true
     keyPairName: abarciauskas-ecs-2
     docker:
-      username: cumuluss
+      username: cumulususer
     services:
       DownloadTiles:
         image: cumuluss/cumulus-geolambda:0.0.0
