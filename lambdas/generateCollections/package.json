@@ -1,0 +1,22 @@
+{
+  "name": "generatecollections",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf dist && mkdir dist && cp -R schemas dist/ && webpack"
+  },
+  "author": "aimee@developmentseed.org",
+  "license": "ISC",
+  "dependencies": {
+    "@cumulus-ce/api": "^0.0.2",
+    "@cumulus/cumulus-message-adapter-js": "^1.0.1",
+    "handlebars": "^4.0.11",
+    "moment": "^2.22.1",
+    "webpack": "^4.9.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^2.1.4"
+  }
+}
