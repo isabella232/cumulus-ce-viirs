@@ -30,10 +30,10 @@ default:
     restartTasksOnDeploy: true
     keyPairName: abarciauskas-ecs-2
     docker:
-      username: aimeeb2
+      username: cumuluss
     services:
       DownloadTiles:
-        image: aimeeb2/cumulus-ecs-task-python:0.0.8
+        image: cumuluss/cumulus-ecs-task-python:0.0.1
         cpu: 400
         memory: 700
         count: 3
