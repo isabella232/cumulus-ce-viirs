@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@cumulus-ce/api": "^0.0.2",
-    "@cumulus-ce/deployment": "^0.0.3",
+    "@cumulus-ce/deployment": "^0.0.4",
     "@cumulus/discover-granules": "^1.5.4",
     "@cumulus/hello-world": "^1.5.4",
     "@cumulus/integration-tests": "^1.5.4",

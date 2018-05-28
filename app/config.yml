@@ -27,7 +27,7 @@ default:
     amiid: ami-aff65ad2
     publicIp: true
     restartTasksOnDeploy: true
-    keyPairName: abarciauskas-ecs
+    keyPairName: abarciauskas-ecs-2
     docker:
       username: aimeeb2
     services:
