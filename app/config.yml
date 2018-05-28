@@ -22,7 +22,8 @@ default:
 
   ecs:
     instanceType: t2.xlarge
-    desiredInstances: 1
+    desiredInstances: 3
+    maxInstances: 3
     availabilityZone: us-east-1e
     amiid: ami-aff65ad2
     publicIp: true
@@ -35,7 +36,7 @@ default:
         image: aimeeb2/cumulus-ecs-task-python:0.0.8
         cpu: 400
         memory: 700
-        count: 1
+        count: 3
         envs:
           AWS_DEFAULT_REGION:
             function: Fn::Sub
