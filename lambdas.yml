@@ -44,3 +44,5 @@ GenerateCollections:
     ProvidersTable:
       function: Ref
       value: ProvidersTableDynamoDB
+    bucket: '{{buckets.internal}}'
+    stackName: '{{stackName}}'
