@@ -42,8 +42,11 @@ default:
             function: Fn::Sub
             value: '${AWS::Region}'
         commands:
+          - cumulus-ecs-task
+          - '--activityArn'
           - function: Ref
             value: DownloadTilesActivity
+          - '--lambdaArn'
           - function: Ref
             value: ViirsProcessingLambdaFunction
 
