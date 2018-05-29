@@ -25,7 +25,7 @@ default:
     desiredInstances: 3
     maxInstances: 3
     availabilityZone: us-east-1e
-    amiid: ami-aff65ad2
+    amiid: ami-a7a242da
     publicIp: true
     restartTasksOnDeploy: true
     keyPairName: abarciauskas-ecs-2
