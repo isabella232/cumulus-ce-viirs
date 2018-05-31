@@ -28,7 +28,7 @@ default:
     amiid: ami-a7a242da
     publicIp: true
     restartTasksOnDeploy: true
-    keyPairName: abarciauskas-ecs-2
+    keyPairName: abarciauskas-ecs
     docker:
       username: cumulususer
     services:
