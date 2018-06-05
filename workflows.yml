@@ -72,6 +72,7 @@ DiscoverAndDownloadGranules:
       CumulusConfig:
         provider: '{$.meta.provider}'
         collection: '{$.meta.collection}'
+        buckets: '{$.meta.buckets}'
         cumulus_message:
           input: '[$.payload.granules[*].files[*].name]'
       Type: Task

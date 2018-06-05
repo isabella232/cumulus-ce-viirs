@@ -4,17 +4,6 @@ const cumulusMessageAdapter = require('@cumulus/cumulus-message-adapter-js');
 const { scheduler } = require('@cumulus-ce/api');
 const Rule = require('@cumulus-ce/api/models/rules');
 
-// TODO: Make this an environment variable
-const options = {
-  spanUnit: 'month',
-  spanStart: '201204',
-  spanEnd: '201206'
-}
-const dateFormat = 'YYYYMM';
-const spanEnd = options.spanEnd ? moment(options.spanEnd, dateFormat) : moment();
-const spanUnit = options.spanUnit || 'day';
-const spanStart = moment(options.spanStart, dateFormat);
-
 const collection = {
   "name": "viirs_template",
   "templated_name": "viirs_{{pointInTime}}",
@@ -30,7 +19,12 @@ const collection = {
   "granuleIdExtraction": "(.*)\\.tgz",
   "granuleId": "SVDNB_npp_20180301-20180331_00N060E_vcmcfg_v10_c201804022005",
   "sampleFileName": "SVDNB_npp_20180301-20180331_00N060E_vcmcfg_v10_c201804022005.tgz",
-  "dataType": "viirs-collection" 
+  "dataType": "viirs-collection",
+  "options": {
+    "spanUnit": "month",
+    "spanStart": "201204",
+    "spanEnd": "201206"
+  }
 };
 
 const event = {
@@ -41,6 +35,12 @@ const event = {
 }
 
 const generateCollections = async function(event) {
+  const options = event.config.collection.options;
+  const dateFormat = 'YYYYMM';
+  const spanEnd = options.spanEnd ? moment(options.spanEnd, dateFormat) : moment();
+  const spanUnit = options.spanUnit || 'day';
+  const spanStart = moment(options.spanStart, dateFormat);
+
   let currentPointInTime = spanStart;
   let pointsInTime = [];
   while (currentPointInTime <= spanEnd) {
