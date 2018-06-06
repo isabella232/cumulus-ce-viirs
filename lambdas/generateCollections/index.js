@@ -22,8 +22,8 @@ const collection = {
   "dataType": "viirs-collection",
   "options": {
     "spanUnit": "month",
-    "spanStart": "201204",
-    "spanEnd": "201206"
+    "spanStart": "201207",
+    "spanEnd": "201209"
   }
 };
 

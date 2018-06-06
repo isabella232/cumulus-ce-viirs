@@ -18,8 +18,14 @@ module.exports = {
   },
   externals: [
     'aws-sdk',
-    'electron'
+    'electron',
+    {'formidable': 'url'}
   ],
   devtool,
-  target: 'node'
+  target: 'node',
+  resolve: {
+      alias: {
+         handlebars: 'handlebars/dist/handlebars.min.js'
+      }
+  }
 };
