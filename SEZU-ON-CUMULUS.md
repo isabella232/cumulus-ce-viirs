@@ -21,7 +21,7 @@ Running the workflow:
 ```
 to run the discover and process workflow for _all_ months. Note, however, running this without failing also requires `ecs.volumeSize` can handle the workload of however many tasks could be running on a single ECS instance.
   * Without extensive testing, I found running 2 years worth of collections can be run safely on 3 instances - each having 150GB for Docker - running 
-* Start the `GenerateCollectionsTriggerWorkflows` workflow (to be renamed as it doesn't create collections or rules)
+* Start the `GenerateCollectionsTriggerWorkflows` workflow. At the moment you can do this by running `node spec/test.js`
 
 ## Why?
 
@@ -57,6 +57,7 @@ The nice thing about the `generateCollections` lambda is meant to use a collecti
 The next step isto define this in a dynamically defined rule or dynamically define the collection so that every month the workflow runs and collects imagery for that or the past month.
 
 #### Tile groups
+
 Tiles need to be delivered to the viirs processing step in groups of 6 VIIRS tiles, which cover the globe. Discovery _can_ use a regex to find greater than 6 tiles at a time, my understanding is that 6 tiles need to be processed at once (althoug looking at the code not sure this understanding is correct or the stitching is working as expectied). So discovery has to either be dumb, using pre-defined url strings to find images for a given year-month or include a regex smart enough to discover and group 6 tiles. The former is implemented although the latter might be possible.
 
 #### Using ECS
@@ -72,20 +73,33 @@ The VIIRS ingest, processing and analysis is written in python. Thus was born [c
 
 Of course, this doesn't really make sense, but I found that `cumulus-ecs-task-python` is fine in isolation but the requirements of viirs processing necessitated a heavier base image. So I ended up copying over all the code from `cumulus-ecs-task-python` to `cumulus-geolambda`.
 
+#### Using `cumulus-ecs-task-*` may not make sense for all functions
+
+It's hard to test lambdas which are being implemented by ECS when there are system requirements for the lambdas to run - as is the case for `viirs_processing`.
+
+#### Parallel processing in python lambdas required a special submodule
+
+You can't use the standard multiprocessing `p = Pool(n); p.map(func, list)` API. See [Parallel Processing in Python with AWS Lambda](https://aws.amazon.com/blogs/compute/parallel-processing-in-python-with-aws-lambda/) or [parallel_wget.py](https://github.com/abarciauskas-bgse/parallel_wget/blob/master/parallel_wget.py) for the alternative implementation.
+
 
 ## TODOs
 
 ### Priority
-* **GET NEW SEZ-BOUNDARIES FILES**
+* (IMPORTANT) Get new SEZ-U boundaries files
+* Documentation for new packages
+* Update specs
 
 ### Nice to have
 * Design a way to do regex discovery of lambdas (needs to pass set of 6 files to DownloadTiles).
 * Design and implement automatic ingest of new data.
-* Unit tests, schemas, and documentation for new packages (generateCollections, viirs_processing, tif_stats, parallel_wget, cumulus-ecs-task-python/cumulus-geolambda's run_task)
-* GenerateCollections should run an arbitrary workflow (right now it's hard-coded)
-* Use generate collections in another use case to validate it's extensibility + reusability
-* Tif_stats could be more generic
+* Unit tests for new packages (generateCollections, viirs_processing, tif_stats, parallel_wget, cumulus-ecs-task-python/cumulus-geolambda's run_task)
+* `generateCollections` lambda should run an arbitrary workflow (right now it's hard-coded)
+
 * Validate data processing with SEZ-U team - are the tiles getting stitched together?
+
+### No real ues case yet
+* Tif_stats could be more flexible
+* Use `generateCollections` in another use case to validate it's extensibility + reusability
 
 ## Disclaimer
 
