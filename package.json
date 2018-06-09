@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "babel-node spec/run.js",
-    "viirs": "rm -rf lambdas/viirs_processing && git clone https://github.com/abarciauskas-bgse/viirs_processing && mv viirs_processing lambdas/ && cd lambdas/viirs_processing && make viirs && sudo rm -r .git",
+    "build-generate-collections": "cd lambdas/generateCollections && npm run build",
     "deploy": "./node_modules/.bin/kes cf deploy --kes-folder app --region us-east-1 --template node_modules/@cumulus-ce/deployment/app",
-    "deploy-iam": "kes cf deploy --kes-folder iam --region us-east-1 --deployment default"
+    "deploy-iam": "kes cf deploy --kes-folder iam --region us-east-1 --deployment default",
+    "viirs": "rm -rf lambdas/viirs_processing && git clone https://github.com/abarciauskas-bgse/viirs_processing && mv viirs_processing lambdas/ && cd lambdas/viirs_processing && make viirs && sudo rm -r .git"
   },
   "author": "Cumulus Authors",
   "license": "Apache-2.0",
