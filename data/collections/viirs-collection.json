@@ -13,5 +13,10 @@
   "granuleIdExtraction": "(.*)\\.tgz",
   "granuleId": "SVDNB_npp_20180301-20180331_00N060E_vcmcfg_v10_c201804022005",
   "sampleFileName": "SVDNB_npp_20180301-20180331_00N060E_vcmcfg_v10_c201804022005.tgz",
-  "dataType": "viirs-collection" 
+  "dataType": "viirs-collection",
+  "options": {
+    "spanUnit": "month",
+    "spanStart": "201207",
+    "spanEnd": "201209"
+  }
 }

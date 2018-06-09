@@ -4,36 +4,6 @@ const cumulusMessageAdapter = require('@cumulus/cumulus-message-adapter-js');
 const { scheduler } = require('@cumulus-ce/api');
 const Rule = require('@cumulus-ce/api/models/rules');
 
-const collection = {
-  "name": "viirs_template",
-  "templated_name": "viirs_{{pointInTime}}",
-  "version": "001",
-  "files": [
-    {
-      "regex": "(.*)\\.tgz",
-      "bucket": "internal",
-      "sampleFileName": "SVDNB_npp_20180301-20180331_00N060E_vcmcfg_v10_c201804022005.tgz"
-    }
-  ],
-  "provider_path": "/instruments/remote-sensing/passive/spectrometers-radiometers/imaging/viirs/dnb_composites/v10/{{pointInTime}}/vcmcfg/",
-  "granuleIdExtraction": "(.*)\\.tgz",
-  "granuleId": "SVDNB_npp_20180301-20180331_00N060E_vcmcfg_v10_c201804022005",
-  "sampleFileName": "SVDNB_npp_20180301-20180331_00N060E_vcmcfg_v10_c201804022005.tgz",
-  "dataType": "viirs-collection",
-  "options": {
-    "spanUnit": "month",
-    "spanStart": "201207",
-    "spanEnd": "201209"
-  }
-};
-
-const event = {
-  config: {
-    provider: 'viirs_provider',
-    collection: collection
-  }
-}
-
 const generateCollections = async function(event) {
   const options = event.config.collection.options;
   const dateFormat = 'YYYYMM';
@@ -79,11 +49,3 @@ function handler(event, context, callback) {
   cumulusMessageAdapter.runCumulusTask(generateCollections, event, context, callback);
 }
 exports.handler = handler;
-
-process.env.bucket = 'cumulus-devseed-internal';
-process.env.stackName = 'cce';
-process.env.ProvidersTable = 'cce-ProvidersTable';
-process.env.CollectionsTable = 'cce-CollectionsTable';
-generateCollections(event)
-  .then(console.log)
-  .catch(console.log);
