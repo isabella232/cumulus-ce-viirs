@@ -1,4 +1,4 @@
-GenerateCollectionsAndRules:
+GenerateCollectionsTriggerWorkflows:
   Comment: 'Generate collections and rules'
   StartAt: StatusReport
   States:

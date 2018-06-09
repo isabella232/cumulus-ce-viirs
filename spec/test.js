@@ -5,7 +5,7 @@ const { loadConfig } = require('./helpers/testUtils');
 const config = loadConfig();
 const lambdaStep = new LambdaStep();
 
-const taskName = 'GenerateCollectionsAndRules';
+const taskName = 'GenerateCollectionsTriggerWorkflows';
 let workflowExecution;
 
 async function startWf() {
