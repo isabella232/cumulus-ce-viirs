@@ -3,6 +3,8 @@ const { addProviders, addCollections } = require('@cumulus/integration-tests');
 const { loadConfig } = require('../helpers/testUtils');
 const config = loadConfig();
 
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 180000;
+
 const collectionsDirectory = './data/collections';
 const providersDirectory = './data/providers';
 

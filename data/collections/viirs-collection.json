@@ -16,7 +16,7 @@
   "dataType": "viirs-collection",
   "options": {
     "spanUnit": "month",
-    "spanStart": "201207",
-    "spanEnd": "201209"
+    "spanStart": "201401",
+    "spanEnd": "201512"
   }
 }

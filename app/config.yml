@@ -29,6 +29,7 @@ default:
     publicIp: true
     restartTasksOnDeploy: true
     keyPairName: abarciauskas-ecs
+    volumeSize: 150
     docker:
       username: cumulususer
     services:
@@ -36,7 +37,7 @@ default:
         image: cumuluss/cumulus-geolambda:0.0.4
         cpu: 400
         memory: 700
-        count: 3
+        count: 12
         envs:
           AWS_DEFAULT_REGION:
             function: Fn::Sub
