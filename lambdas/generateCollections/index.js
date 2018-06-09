@@ -4,6 +4,12 @@ const cumulusMessageAdapter = require('@cumulus/cumulus-message-adapter-js');
 const { scheduler } = require('@cumulus-ce/api');
 const Rule = require('@cumulus-ce/api/models/rules');
 
+/**
+ * Generates collection-like objects and schedules the 'DiscoverAndDownloadGranules' workflow.
+ *
+ * @param  {Object} event Lambda event, with config and collection types
+ * @return {Object}       Message
+ */
 const generateCollections = async function(event) {
   const options = event.config.collection.options;
   const dateFormat = 'YYYYMM';
