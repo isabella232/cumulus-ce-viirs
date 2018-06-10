@@ -21,10 +21,17 @@ Update the `viirs_template` collection definition to include months of interest.
 
 This definition would run the discover and process workflow for _all_ months. 
 
+```
+jasmine spec/setup/PopulateProvidersCollections.js
+```
+
 Note, however, running this without failing also requires `ecs.volumeSize` can handle the workload of however many tasks could be running on a single ECS instance. Without extensive testing, I found running 2 years worth of collections can be run safely on 3 instances - each having 150GB for Docker - running.
 
+Start the `GenerateCollectionsTriggerWorkflows` workflow:
 
-Start the `GenerateCollectionsTriggerWorkflows` workflow. You can trigger the workflow using `node spec/test.js`
+```
+node spec/test.js
+```
 
 ## Why SEZ-U on Cumulus?
 
@@ -59,6 +66,8 @@ This workflow can be further enhanced by the following next steps:
 * Define year-months dynamically via the rule or collection so that every month the workflow runs and collects imagery for that or the past month.
 * Make generateCollections more generic to handle other scenarios where a use case may require generating collection-like objects for workflows (or pull this flexibility into rules).
 
+Another, less impactful, difference, is VIIRS is not an "ingest" workflow, so the "syncGranules" task, typical of most other workflows, was not necessary.
+
 #### VIIRS Tiles need to be grouped
 
 Tiles need to be delivered to the `viirs_processing` step in groups of 6 VIIRS tiles, which cover the globe. Discovery _can_ use a regex to find greater than 6 tiles at a time, my understanding is that 6 tiles need to be processed at once (althoug looking at the code not sure this understanding is correct or the stitching is working as expectied). So discovery has to either be dumb, using pre-defined url strings to find images for a given year-month or include a regex smart enough to discover and group 6 tiles. The former is implemented although the latter might be possible.
@@ -92,8 +101,6 @@ You can't use python's standard multiprocessing `p = Pool(n); p.map(func, list)`
 ## TODOs
 
 ### Priority
-* Important: Get new SEZ-U boundaries files
-* Re-run analysis
 * Update specs
 
 ### Nice to have
