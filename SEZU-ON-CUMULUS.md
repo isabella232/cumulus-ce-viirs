@@ -2,7 +2,7 @@
 
 This document describes how to configure and deploy Cumulus to implement the [SEZ-U VIIRS Nightlights Electricity Consumption ingest and analysis](https://github.com/developmentseed/SEZ-U/tree/master/VIIRS_Nightlights).
 
-![]()
+![VIIRS Workflow GIF](./viirs-workflow.gif)
 
 ## How To Run the SEZ-U Workflow
 
@@ -25,7 +25,7 @@ This definition would run the discover and process workflow for _all_ months.
 jasmine
 ```
 
-Note, however, running this without failing also requires `ecs.volumeSize` can handle the workload of however many tasks could be running on a single ECS instance. Without extensive testing, I found running 2 years worth of collections can be run safely on 3 instances - each having 150GB for Docker - running.
+Note, however, this assumes the ECS cluster size and `ecs.volumeSize` can handle the workload of however many tasks could be running on a single ECS instance. Without extensive testing, I found running 2 years worth of collections can be run safely on 3 instances - each having 150GB for Docker - running.
 
 ## Why SEZ-U on Cumulus?
 
