@@ -6,9 +6,9 @@ This document describes how to configure and deploy Cumulus to implement the [SE
 
 ## How To Run the SEZ-U Workflow
 
-Start by following instructions in the [README.md](./README.md).
+1. Start by following instructions in the [README.md](./README.md).
 
-Update the `viirs_template` collection definition to include months of interest. For example, you could have in [`./data/viirs-collection.json`](./data/viirs-collection.json):
+2. Update the `viirs_template` collection definition to include months of interest. For example, you could have in [`./data/viirs-collection.json`](./data/viirs-collection.json):
 ```json
 {
   "options": {
@@ -19,13 +19,15 @@ Update the `viirs_template` collection definition to include months of interest.
 }
 ```
 
-This definition would run the discover and process workflow for _all_ months. 
+This definition would run the discover and process workflow for all months from January 2012 to May 2018.
+
+3. Update the collection and run the workflows:
 
 ```
 jasmine
 ```
 
-Note, however, this assumes the ECS cluster size and `ecs.volumeSize` can handle the workload of however many tasks could be running on a single ECS instance. Without extensive testing, I found running 2 years worth of collections can be run safely on 3 instances - each having 150GB for Docker - running.
+Note, running this command assumes the ECS cluster size and `ecs.volumeSize` can handle the workload you have defined. Each year-month will trigger a workflow to process VIIRs nightlights for that year-month.
 
 ## Why SEZ-U on Cumulus?
 
