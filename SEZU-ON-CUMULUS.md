@@ -22,16 +22,10 @@ Update the `viirs_template` collection definition to include months of interest.
 This definition would run the discover and process workflow for _all_ months. 
 
 ```
-jasmine spec/setup/PopulateProvidersCollections.js
+jasmine
 ```
 
 Note, however, running this without failing also requires `ecs.volumeSize` can handle the workload of however many tasks could be running on a single ECS instance. Without extensive testing, I found running 2 years worth of collections can be run safely on 3 instances - each having 150GB for Docker - running.
-
-Start the `GenerateCollectionsTriggerWorkflows` workflow:
-
-```
-node spec/test.js
-```
 
 ## Why SEZ-U on Cumulus?
 
