@@ -36,7 +36,7 @@ This project served internal and external functions:
 * Internally, it helped to develop understanding of Cumulus functionality and constraints.
 * Externally, it provides an example Cumulus workflow to external Cumulus developers.
 
-Further, using the Cumulus and the cloud for the SEZ-U workflow provides the following benefits:
+Further, using Cumulus and the cloud for the SEZ-U workflow provides the following benefits:
 
 * Enables **performance** improvements over running on developer machines: Performance gains come from Cumulus' flavor of distributed computing scaling via Cumulus tasks (either on an ECS cluster or parallel lambda invocations) as well as a small library to download tiles in parallel ([parallel_wget](https://github.com/abarciauskas-bgse/parallel_wget)).
 * **Externalizes computation and storage** from developer machines. Developer machines have more capacity for new development and results are safely stored
@@ -81,7 +81,7 @@ The VIIRS ingest, processing and analysis is written in python. Thus was born [c
 
 See [How to increase the default storage limit of 10G for Docker on ECS using Cloudformation](https://github.com/developmentseed/how/issues/185) on developmentseed/how.
 
-#### It's unfortunate (but logical) there is no easy way to "merge" docker images.
+#### It's unfortunate (but sensical) there is no easy way to "merge" docker images.
 
 Of course, this doesn't really make sense, but I found that `cumulus-ecs-task-python` is fine in isolation but the requirements of viirs processing necessitated a heavier base image. So I ended up copying over all the code from `cumulus-ecs-task-python` to `cumulus-geolambda`.
 
@@ -96,10 +96,6 @@ You can't use python's standard multiprocessing `p = Pool(n); p.map(func, list)`
 
 ## TODOs
 
-### Priority
-* Update specs
-
-### Nice to have
 * Documentation for new packages
 * Design a way to do regex discovery of lambdas (needs to pass set of 6 files to DownloadTiles).
 * Design and implement automatic ingest of new data.
