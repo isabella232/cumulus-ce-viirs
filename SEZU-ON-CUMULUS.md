@@ -8,7 +8,7 @@ This document describes how to configure and deploy Cumulus to implement the [SE
 
 1. Git clone [https://github.com/developmentseed/cumulus-ce-viirs](https://github.com/developmentseed/cumulus-ce-viirs) and follow the instructions in the README.
 
-2. Update the `viirs_template` collection definition to include months of interest. For example, you could have in [`./data/viirs-collection.json`](./data/viirs-collection.json):
+2. Update the `viirs_template` collection definition to include months of interest. For example, you could have in [`./data/collections/viirs-collection.json`](./data/collections/viirs-collection.json):
 ```json
 {
   "options": {
