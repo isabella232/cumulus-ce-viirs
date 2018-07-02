@@ -1,13 +1,16 @@
 default:
-  prefix: cce
-  stackName: cce-iam
+  prefix: sez
+  stackName: sez-iam
   authorizor: false
   capabilities:
     - CAPABILITY_NAMED_IAM
   buckets:
-    internal: cumulus-devseed-internal
-    private: cumulus-devseed-private
-
+    internal:
+      name: cumulus-developmentseed-internal
+      type: internal
+    private:
+      name: cumulus-developmentseed-private
+      type: private
   params:
      - name: ResourcePrefix
        value: '{{prefix}}'

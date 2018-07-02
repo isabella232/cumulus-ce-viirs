@@ -1,6 +1,6 @@
 default:
-  stackName: cce
-  stackNameNoDash: Cce
+  stackName: sez
+  stackNameNoDash: sez
   params:
     - name: DockerPassword
       value: '{{DOCKER_PASSWORD}}'
@@ -16,19 +16,18 @@ default:
   apiStage: dev
 
   vpc:
-    vpcId: vpc-e61ddf9e
+    vpcId: vpc-dfe524ba
     subnets:
-      - subnet-ef13ced0
+      - subnet-ced1f5e6
 
   ecs:
     instanceType: t2.xlarge
-    desiredInstances: 3
-    maxInstances: 3
-    availabilityZone: us-east-1e
+    desiredInstances: 1
+    maxInstances: 1
+    availabilityZone: us-east-1c
     amiid: ami-a7a242da
     publicIp: true
     restartTasksOnDeploy: true
-    keyPairName: abarciauskas-ecs
     volumeSize: 150
     docker:
       username: cumulususer
@@ -37,7 +36,7 @@ default:
         image: cumuluss/cumulus-geolambda:0.0.4
         cpu: 400
         memory: 700
-        count: 12
+        count: 1
         envs:
           AWS_DEFAULT_REGION:
             function: Fn::Sub
@@ -53,18 +52,26 @@ default:
 
   activities:
     - name: DownloadTiles
+  
+  system_bucket: '{{buckets.internal.name}}'
 
   buckets:
-    internal: cumulus-devseed-internal
-    private: cumulus-devseed-private
-    protected: cumulus-devseed-protected
+    internal:
+      name: cumulus-developmentseed-internal
+      type: internal
+    private:
+      name: cumulus-developmentseed-private
+      type: private
+    protected:
+      name: cumulus-developmentseed-protected
+      type: protected
 
   iams:
-    instanceProfile: 'arn:aws:iam::{{AWS_ACCOUNT_ID}}:instance-profile/cce-ecs'
-    ecsRoleArn: 'arn:aws:iam::{{AWS_ACCOUNT_ID}}:role/cce-ecs'
-    lambdaApiGatewayRoleArn: 'arn:aws:iam::{{AWS_ACCOUNT_ID}}:role/cce-lambda-api-gateway'
-    lambdaProcessingRoleArn: 'arn:aws:iam::{{AWS_ACCOUNT_ID}}:role/cce-lambda-processing'
-    stepRoleArn: 'arn:aws:iam::{{AWS_ACCOUNT_ID}}:role/cce-steprole'
+    instanceProfile: 'arn:aws:iam::{{AWS_ACCOUNT_ID}}:instance-profile/sez-ecs'
+    ecsRoleArn: 'arn:aws:iam::{{AWS_ACCOUNT_ID}}:role/sez-ecs'
+    lambdaApiGatewayRoleArn: 'arn:aws:iam::{{AWS_ACCOUNT_ID}}:role/sez-lambda-api-gateway'
+    lambdaProcessingRoleArn: 'arn:aws:iam::{{AWS_ACCOUNT_ID}}:role/sez-lambda-processing'
+    stepRoleArn: 'arn:aws:iam::{{AWS_ACCOUNT_ID}}:role/sez-steprole'
 
   urs_url: https://uat.urs.earthdata.nasa.gov/ #make sure to include the trailing slash
 
@@ -75,6 +82,3 @@ default:
     # api_distribution_url: https://apigateway-url-to-distribution-app/ #make sure to include the trailing slash
 
   # URS users who should have access to the dashboard application.
-  users:
-    - username: barciaai@gmail.com
-    - username: alireza@developmentseed.org
