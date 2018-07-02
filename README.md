@@ -11,7 +11,7 @@ Read the [Cumulus Documentation](https://cumulus-nasa.github.io/)
 
 ## Installation
 
-Pre-requisits
+Pre-requisites
 
 * node, nvm
 
