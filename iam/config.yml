@@ -4,6 +4,9 @@ default:
   authorizor: false
   capabilities:
     - CAPABILITY_NAMED_IAM
+
+  system_bucket: cumulus-developmentseed-internal
+
   buckets:
     internal:
       name: cumulus-developmentseed-internal
@@ -11,14 +14,13 @@ default:
     private:
       name: cumulus-developmentseed-private
       type: private
+    protected:
+      name: cumulus-developmentseed-protected
+      type: protected
+    shared:
+      name: cumulus-data-shared
+      type: shared
+
   params:
      - name: ResourcePrefix
        value: '{{prefix}}'
-     - name: InternalBucketName
-       value: '{{buckets.internal}}'
-     - name: PrivateBucketName
-       value: '{{buckets.private}}'
-     - name: ProtectedBucketName
-       value: '{{buckets.protected}}'
-     - name: PublicBucketName
-       value: '{{buckets.public}}'

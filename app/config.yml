@@ -14,6 +14,7 @@ default:
       handler: index.googleToken
 
   apiStage: dev
+  api_distribution_url: https://example.com/
 
   vpc:
     vpcId: vpc-dfe524ba
@@ -72,6 +73,7 @@ default:
     lambdaApiGatewayRoleArn: 'arn:aws:iam::{{AWS_ACCOUNT_ID}}:role/sez-lambda-api-gateway'
     lambdaProcessingRoleArn: 'arn:aws:iam::{{AWS_ACCOUNT_ID}}:role/sez-lambda-processing'
     stepRoleArn: 'arn:aws:iam::{{AWS_ACCOUNT_ID}}:role/sez-steprole'
+    distributionRoleArn: 'arn:aws:iam::{{AWS_ACCOUNT_ID}}:role/sez-distribution-api-lambda'
 
   urs_url: https://uat.urs.earthdata.nasa.gov/ #make sure to include the trailing slash
 
